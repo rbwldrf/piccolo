@@ -73,17 +73,17 @@ impl<'gc> Context<'gc> {
     }
 
     // Calls `ctx.globals().get(key)`
-    pub fn get_global<V: FromValue<'gc>>(self, key: &str) -> Result<V, TypeError> {
+    pub fn get_global<V: FromValue<'gc>>(self, key: &'static str) -> Result<V, TypeError> {
         self.state.globals.get(self, key)
     }
 
     // Calls `ctx.globals().get_value(key)`
-    pub fn get_global_value(self, key: &str) -> Value<'gc> {
+    pub fn get_global_value(self, key: &'static str) -> Value<'gc> {
         self.state.globals.get_value(self, key)
     }
 
     // Calls `ctx.globals().set_field(key, value)`
-    pub fn set_global<V: IntoValue<'gc>>(self, key: &str, value: V) -> Value<'gc> {
+    pub fn set_global<V: IntoValue<'gc>>(self, key: &'static str, value: V) -> Value<'gc> {
         self.state.globals.set_field(self, key, value)
     }
 
